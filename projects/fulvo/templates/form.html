@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Nuevo Jugador{% endblock %}
+
+{% block content %}
+<div class="main-container">
+    <h1>Agregar jugador</h1>
+    <form action="/procesar" method="POST">
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" required>
+
+        <label for="posicion">Posición:</label>
+        <select name="posicion" required>
+            <option value="Arquero">Arquero</option>
+            <option value="Defensor">Defensor</option>
+            <option value="Mediocampista">Mediocampista</option>
+            <option value="Delantero">Delantero</option>
+        </select>
+
+        <label for="numero">Número de camiseta:</label>
+        <input type="number" name="numero" required>
+
+        <label for="equipo">Equipo:</label>
+        <input type="text" name="equipo">
+
+        <input type="submit" value="Agregar jugador">
+    </form>
+</div>
+{% endblock %}

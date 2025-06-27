@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Jugador{% endblock %}
+
+{% block content %}
+<div class="main-container">
+    <h1>Editar jugador</h1>
+    <form action="/actualizar/{{ id }}" method="POST">
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" value="{{ jugador[0] }}" required>
+
+        <label for="posicion">Posición:</label>
+        <select name="posicion" required>
+            <option value="Arquero" {% if jugador[1] == 'Arquero' %}selected{% endif %}>Arquero</option>
+            <option value="Defensor" {% if jugador[1] == 'Defensor' %}selected{% endif %}>Defensor</option>
+            <option value="Mediocampista" {% if jugador[1] == 'Mediocampista' %}selected{% endif %}>Mediocampista</option>
+            <option value="Delantero" {% if jugador[1] == 'Delantero' %}selected{% endif %}>Delantero</option>
+        </select>
+
+        <label for="numero">Número de camiseta:</label>
+        <input type="number" name="numero" value="{{ jugador[2] }}" required>
+
+        <label for="equipo">Equipo:</label>
+        <input type="text" name="equipo" value="{{ jugador[3] or '' }}">
+
+        <input type="submit" value="Actualizar jugador">
+    </form>
+    <br>
+    <a href="/listado">Cancelar</a>
+</div>
+{% endblock %}
