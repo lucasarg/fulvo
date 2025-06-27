@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, flash, url_for
 import sqlite3
 from init_db import init_db
+#texto agregado para practicar una educion a github
 
 app = Flask(__name__)
 app.secret_key = "clave-secreta-segura"  # Podés cambiarla por algo más fuerte si querés
