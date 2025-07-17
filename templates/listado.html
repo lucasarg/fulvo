@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Listado de Jugadores{% endblock %}
+
+{% block content %}
+<div class="main-container">
+    <h1>Jugadores del equipo</h1>
+    <ul class="listado">
+        {% for jugador in jugadores %}
+        <li class="item">
+            <span class="nombre">
+                #{{ jugador[3] }} - {{ jugador[1] }} ({{ jugador[2] }}) {% if jugador[4] %}- {{ jugador[4] }}{% endif %}
+            </span>
+            <div class="acciones">
+                <form action="/eliminar/{{ jugador[0] }}" method="POST" style="display:inline;">
+                    <button type="submit">🗑️ Eliminar</button>
+                </form>
+                <a href="/editar/{{ jugador[0] }}" class="btn-editar">✏️ Editar</a>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

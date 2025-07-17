@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Mi App Flask{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+{% if session.get('usuario') %}
+    👤 {{ session['usuario'] }} | <a href="{{ url_for('logout') }}">Cerrar sesión</a>
+{% else %}
+    <a href="{{ url_for('login') }}">Login</a>
+{% endif %}
+
+
+    {% with mensajes = get_flashed_messages() %}
+      {% if mensajes %}
+        <div class="flash">
+          {% for msg in mensajes %}
+            <p>{{ msg }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+    
+        <a href="/">🏠 Inicio</a> |
+        <a href="/form">📝 Formulario</a> |
+        <a href="/listado">📋 Listado</a>
+    </nav>
+    <hr>
+
+    {% block content %}
+    <!-- Contenido específico de cada página -->
+    {% endblock %}
+</body>
+</html>
